@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from MerchantManagement import views as merchant_views
+from CustomerManagement import views as customer_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Merchant/', merchant_views.showMerchants, name='Merchants')
+    path('Merchant/', merchant_views.showMerchants, name='Merchants'),
+    path('Customer/',customer_views.showCustomers, name = 'Customer' )
 ]

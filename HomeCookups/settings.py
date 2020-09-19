@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'MerchantManagement.apps.MerchantmanagrmentConfig'
+    'MerchantManagement.apps.MerchantmanagrmentConfig',
+    'CustomerManagement.apps.CustomermanagementConfig'
 ]
 
 MIDDLEWARE = [
