@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for f in Food %}
+        <h2>Food info:  {{ f.id }} </h2>
+        {{ f.Food_Name }} <br>
+        {{ f.Food_Desc }} <br>
+        {{ f.Price }} <br>
+
+    {% endfor %}
+
+{% endblock content %}

@@ -4,5 +4,8 @@ from django.db import models
 
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100)
-    Phone_Number = models.IntegerField(max_length=200, unique=True)
+    Phone_Number = models.IntegerField(unique=True)
     Address = models.CharField(max_length=200)
+
+
+

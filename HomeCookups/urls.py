@@ -17,9 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from MerchantManagement import views as merchant_views
 from CustomerManagement import views as customer_views
+from FoodManagement import views as food_views
+from OrderManagement import views as order_views
+from BillManagement import views as bill_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Merchant/', merchant_views.showMerchants, name='Merchants'),
-    path('Customer/',customer_views.showCustomers, name = 'Customer' )
+    path('Customer/',customer_views.showCustomers, name = 'Customer' ),
+    path('Food/', food_views.showFoods, name='Food'),
+    path('Order/', order_views.showOrders, name='Order'),
+    path('Bill/', bill_views.showBills, name='Bill')
 ]
