@@ -6,6 +6,6 @@ from .models import Order
 def showOrders(request):
     orderList = Order.objects.all()
     context = {
-        'orders': orderList
+        'Order': orderList
     }
     return render(request, 'OrderManagement/OrderList.html', context)
