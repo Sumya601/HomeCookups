@@ -8,6 +8,9 @@ def showCustomers(request):
     context = {
         'customer': customerList
     }
+
+    print(customerList)
+
     return render(request, 'CustomerManagement/CustomerList.html', context)
 
 

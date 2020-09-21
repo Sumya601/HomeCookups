@@ -2,12 +2,14 @@
 
 {% block content %}
 
-    {% for c in Customers %}
+
+
+    {% for c in customer %}
+
         <h2>Customer info:  {{ c.id }} </h2>
-        {{ c.Customer_Name }} <br>
+        {{ c.customer_name }} <br>
         {{ c.Phone_Number}} <br>
         {{ c.Address}} <br>
-
 
     {% endfor %}
 
