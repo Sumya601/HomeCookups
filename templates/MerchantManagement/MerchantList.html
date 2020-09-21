@@ -2,14 +2,15 @@
 
 {% block content %}
 
-    {% for m in Merchant %}
+    {% for m in Merchants %}
         <h2>Merchant info:  {{ m.id }} </h2>
         {{ m.Merchant_Name }} <br>
-        {{ m.M_Food_Name}} <br>
+        {{ m.Food_Name}} <br>
         {{ m.Business_Name}} <br>
         {{ m.Email }} <br>
         {{ m.NID}} <br>
         {{ m.Phone_Number}} <br>
+        {{ m.Password}} <br>
         {{ m.Address}} <br>
 
 

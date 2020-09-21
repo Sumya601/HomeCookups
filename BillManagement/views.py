@@ -6,6 +6,6 @@ from .models import Bill
 def showBills(request):
     billList = Bill.objects.all()
     context = {
-        'Bill': billList
+        'bills': billList
     }
-    return render(request, 'BillManagement/BillList.html', context)
+    return render(request, 'OrderManagement/OrderList.html', context)

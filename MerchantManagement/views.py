@@ -6,6 +6,6 @@ from .models import Merchant
 def showMerchants(request):
     merchantList = Merchant.objects.all()
     context = {
-        'Merchant': merchantList
+        'merchants': merchantList
     }
     return render(request, 'MerchantManagement/MerchantList.html', context)

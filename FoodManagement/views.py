@@ -6,6 +6,6 @@ from .models import Food
 def showFoods(request):
     foodList = Food.objects.all()
     context = {
-        'Food': foodList
+        'food': foodList
     }
     return render(request, 'FoodManagement/FoodList.html', context)

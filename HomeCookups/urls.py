@@ -23,7 +23,7 @@ from BillManagement import views as bill_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Merchant/', merchant_views.showMerchants, name='Merchant'),
+    path('Merchant/', merchant_views.showMerchants, name='Merchants'),
     path('Customer/',customer_views.showCustomers, name = 'Customer' ),
     path('Food/', food_views.showFoods, name='Food'),
     path('Order/', order_views.showOrders, name='Order'),
