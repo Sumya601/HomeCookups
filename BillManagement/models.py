@@ -9,3 +9,8 @@ class Bill(models.Model):
 
     order = models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
     customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True)
+
+
+
+    def __str__(self):
+        return self.Payment_Type
