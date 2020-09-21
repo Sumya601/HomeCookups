@@ -14,5 +14,5 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
 
 
-def __str__(self):
-    return self.Order_Type
+    def __str__(self):
+        return self.Order_Type

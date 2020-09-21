@@ -10,5 +10,5 @@ class Food(models.Model):
     merchant = models.ForeignKey(Merchant,on_delete=models.SET_NULL,null=True)
 
 
-def __str__(self):
-    return self.Food_Name
+    def __str__(self):
+        return self.Food_Name

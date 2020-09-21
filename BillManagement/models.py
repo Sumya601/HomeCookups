@@ -12,5 +12,5 @@ class Bill(models.Model):
 
 
 
-def __str__(self):
-    return self.Payment_Type
+    def __str__(self):
+        return self.Payment_Type
