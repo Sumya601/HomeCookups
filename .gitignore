@@ -1,11 +1,6 @@
-
-*.pyc
-*.pyc
-<<<<<<< HEAD
 /migrations
 /.idea
 /venv
 /db.sqlite3
 __pycache__/
-=======
->>>>>>> 0e49eb6dd5f8aaa44e2d0bb4f2dfbc8e21f9f3e9
+
