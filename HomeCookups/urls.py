@@ -21,6 +21,9 @@ from FoodManagement import views as food_views
 from OrderManagement import views as order_views
 from BillManagement import views as bill_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Merchant/', merchant_views.showMerchants, name='Merchant'),
@@ -31,4 +34,4 @@ urlpatterns = [
     path('Bill/', bill_views.showBills, name='Bill'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', merchant_views.registration, name='registration')
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

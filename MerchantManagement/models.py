@@ -9,6 +9,8 @@ class Merchant(models.Model):
     NID = models.CharField(max_length=200,unique=True)
     Phone_Number = models.IntegerField(unique=True)
     Address = models.CharField(max_length=200)
+    logo = models.ImageField(upload_to='images/logo/',default=1)
+    constitution = models.FileField(upload_to='files/constitution/')
 
 
     def __str__(self):
