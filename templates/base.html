@@ -16,6 +16,9 @@ This is the base template
 <a href="{% url 'insertMerchant' %}">Insert Merchant</a><br>
 <a href="{% url 'Customer' %}">Customer List</a><br>
 <a href="{% url 'insertCustomer' %}">Insert Customer</a><br>
+<a href="{% url 'Food' %}">Food List</a><br>
+<a href="{% url 'insertFood' %}">Insert Food</a><br>
+
 
 {% if user.is_authenticated %}
     <h3>{{ user.username }}</h3>

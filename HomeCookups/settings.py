@@ -122,6 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'Merchant'
+LOGIN_REDIRECT_URL = 'Food'
 
 LOGOUT_REDIRECT_URL = 'login'
 
