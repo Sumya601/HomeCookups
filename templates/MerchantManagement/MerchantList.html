@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
     {% for m in Merchant %}
@@ -11,6 +13,8 @@
         {{ m.NID}} <br>
         {{ m.Phone_Number}} <br>
         {{ m.Address}} <br>
+        <img src="{{ m.logo.url }}" width="300" height="300" alt="image"> <br>
+        <a href="{{ m.constitution.url }}">View Constitution</a>  <br>
 
 
     {% endfor %}

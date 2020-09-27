@@ -5,8 +5,10 @@
     {% for f in Food %}
         <h2>Food info:  {{ f.id }} </h2>
         {{ f.Food_Name }} <br>
-        {{ f.Food_Desc }} <br>
+        <a href="{{ f.Food_Desc.url }}">Food description</a>  <br>
+        <img src="{{ f.Food_Img.url }}" width="300" height="300" alt="image"> <br>
         {{ f.Price }} <br>
+
 
     {% endfor %}
 

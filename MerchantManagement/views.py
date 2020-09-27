@@ -16,12 +16,13 @@ def registration(request):
     form = UserCreationForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
 
     context = {
         'form' : form
+
     }
     return render(request, 'MerchantManagement/registration.html', context)
 
@@ -31,7 +32,7 @@ def insertMerchant(request):
     form = MerchantForm()
 
     if request.method == "POST":
-        form = MerchantForm(request.POST)
+        form = MerchantForm(request.POST,request.FILES)
         message = "Invalid input. Please try again!"
         if form.is_valid():
             form.save()
@@ -42,4 +43,4 @@ def insertMerchant(request):
         'form' : form,
         'message' : message
     }
-    return render(request, 'MerchantManagement/insertMerchant.html', context)
+    return render(request,'MerchantManagement/insertMerchant.html', context)

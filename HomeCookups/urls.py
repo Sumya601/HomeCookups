@@ -21,14 +21,32 @@ from FoodManagement import views as food_views
 from OrderManagement import views as order_views
 from BillManagement import views as bill_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+assert isinstance(settings.MEDIA_ROOT, object)
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('Merchant/', merchant_views.showMerchants, name='Merchant'),
     path('insertMerchant/', merchant_views.insertMerchant, name='insertMerchant'),
+
     path('Customer/',customer_views.showCustomers, name = 'Customer' ),
+    path('insertCustomer/', customer_views.insertCustomer, name='insertCustomer'),
+
     path('Food/', food_views.showFoods, name='Food'),
+    path('insertFood/', food_views.insertFood, name='insertFood'),
+
     path('Order/', order_views.showOrders, name='Order'),
+    path('insertOrder/', order_views.insertOrder, name='insertOrder'),
+
     path('Bill/', bill_views.showBills, name='Bill'),
+    path('insertBill/', bill_views.insertBill, name='insertBill'),
+
     path('accounts/', include('django.contrib.auth.urls')),
-    path('registration/', merchant_views.registration, name='registration')
-]
+    path('registration/', merchant_views.registration, name='registration'),
+    path('registration/', customer_views.registration, name='registration'),
+    path('registration/', food_views.registration, name='registration'),
+    path('registration/', order_views.registration, name='registration'),
+    path('registration/', bill_views.registration, name='registration')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

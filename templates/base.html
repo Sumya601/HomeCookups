@@ -14,6 +14,14 @@ This is the base template
 
 <a href="{% url 'Merchant' %}">Merchant List</a><br>
 <a href="{% url 'insertMerchant' %}">Insert Merchant</a><br>
+<a href="{% url 'Customer' %}">Customer List</a><br>
+<a href="{% url 'insertCustomer' %}">Insert Customer</a><br>
+<a href="{% url 'Food' %}">Food List</a><br>
+<a href="{% url 'insertFood' %}">Insert Food</a><br>
+<a href="{% url 'Order' %}">Order List</a><br>
+<a href="{% url 'insertOrder' %}">Insert Order</a><br>
+<a href="{% url 'Bill' %}">Bill List</a><br>
+<a href="{% url 'insertBill' %}">Insert Bill</a><br>
 
 
 {% if user.is_authenticated %}
