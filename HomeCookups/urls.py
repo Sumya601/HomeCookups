@@ -41,11 +41,12 @@ urlpatterns = [
     path('insertOrder/', order_views.insertOrder, name='insertOrder'),
 
     path('Bill/', bill_views.showBills, name='Bill'),
-
+    path('insertBill/', bill_views.insertBill, name='insertBill'),
 
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', merchant_views.registration, name='registration'),
     path('registration/', customer_views.registration, name='registration'),
     path('registration/', food_views.registration, name='registration'),
-    path('registration/', order_views.registration, name='registration')
+    path('registration/', order_views.registration, name='registration'),
+    path('registration/', bill_views.registration, name='registration')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
