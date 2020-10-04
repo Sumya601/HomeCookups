@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'merchant_base.html' %}
 
 {% load static %}
 
@@ -13,8 +13,8 @@
         {{ m.NID}} <br>
         {{ m.Phone_Number}} <br>
         {{ m.Address}} <br>
-        <img src="{{ m.logo.url }}" width="300" height="300" alt="image"> <br>
-        <a href="{{ m.constitution.url }}">View Constitution</a>  <br>
+        <img src="{{ m.Profile_pic.url }}" width="300" height="300" alt="image"> <br>
+
 
 
     {% endfor %}

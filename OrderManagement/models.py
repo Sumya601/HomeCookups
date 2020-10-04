@@ -7,7 +7,11 @@ from CustomerManagement.models import Customer
 # Create your models here.
 class Order(models.Model):
     Order_Type = models.CharField(max_length=100)
-    Order_Status = models.CharField(max_length=200)
+    Order_Status = models.CharField(max_length=50,
+                                   choices=(('Available', 'Available'),
+                                            ('Pending', 'Pending'),
+                                            ('Delivered', 'Delivered')),
+                                   default='Available')
 
     food = models.ForeignKey(Food, on_delete=models.SET_NULL, null=True)
     merchant = models.ForeignKey(Merchant, on_delete=models.SET_NULL, null=True)

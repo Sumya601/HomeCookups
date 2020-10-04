@@ -29,13 +29,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('Merchant/', merchant_views.showMerchants, name='Merchant'),
-    path('insertMerchant/', merchant_views.insertMerchant, name='insertMerchant'),
+    path('viewMProfile/', merchant_views.show_Merchant_Profile, name='View_Profile'),
+    path('CompleteProfile/', merchant_views.createProfile, name='Complete_Profile'),
 
     path('Customer/',customer_views.showCustomers, name = 'Customer' ),
-    path('insertCustomer/', customer_views.insertCustomer, name='insertCustomer'),
+    path('c_viewCProfile/', customer_views.show_Customer_Profile, name='C_View_Profile'),
+    path('c_CompleteProfile/', customer_views.createProfile, name='C_Complete_Profile'),
 
     path('Food/', food_views.showFoods, name='Food'),
     path('insertFood/', food_views.insertFood, name='insertFood'),
+    path('foodDetails/<int:Food_id>', food_views.showDetails, name='Food_Details'),
+    path('review/<int:Food_id>', food_views.review_after_complete, name='review'),
 
     path('Order/', order_views.showOrders, name='Order'),
     path('insertOrder/', order_views.insertOrder, name='insertOrder'),
@@ -44,9 +48,21 @@ urlpatterns = [
     path('insertBill/', bill_views.insertBill, name='insertBill'),
 
     path('accounts/', include('django.contrib.auth.urls')),
-    path('registration/', merchant_views.registration, name='registration'),
-    path('registration/', customer_views.registration, name='registration'),
-    path('registration/', food_views.registration, name='registration'),
-    path('registration/', order_views.registration, name='registration'),
-    path('registration/', bill_views.registration, name='registration')
+    path('merchantregistration/', merchant_views.registration, name='merchant_registration'),
+    path('customerregistration/', customer_views.registration, name='customer_registration'),
+
+    path('home/', food_views.main_home, name='main-home')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+'''
+accounts/login/ [name='login']
+accounts/logout/ [name='logout']
+accounts/password_change/ [name='password_change']
+accounts/password_change/done/ [name='password_change_done']
+accounts/password_reset/ [name='password_reset']
+accounts/password_reset/done/ [name='password_reset_done']
+accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+accounts/reset/done/ [name='password_reset_complete']
+'''
+
+

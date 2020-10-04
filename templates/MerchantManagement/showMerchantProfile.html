@@ -1,0 +1,17 @@
+{% extends 'merchant_base.html' %}
+
+{% block content %}
+    <table>
+        <tr><td>{{ Merchant.id }}</td></tr>
+        <tr><td>{{ Merchant.user.Merchant_Name}}</td></tr>
+        <tr><td>{{ Merchant.Merchant_Name}}</td></tr>
+        <tr><td>{{ Merchant.M_Food_Name}}</td></tr>
+        <tr><td>{{ Merchant.Business_Name}}</td></tr>
+        <tr><td>{{ Merchant.Email}}</td></tr>
+        <tr><td>{{ Merchant.NID}}</td></tr>
+        <tr><td>{{ Merchant.Phone_Number}}</td></tr>
+        <tr><td>{{ Merchant.Address}}</td></tr>
+        <tr><td><img src="{{ Merchant.Profile_pic.url }}" height="200" width="200"></td></tr>
+
+    </table>
+{% endblock content %}

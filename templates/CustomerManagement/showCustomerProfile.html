@@ -1,0 +1,12 @@
+{% extends 'customer_base.html' %}
+
+{% block content %}
+    <table>
+        <tr><td>{{ Customer.id }}</td></tr>
+        <tr><td>{{ Customer.customer_name}}</td></tr>
+        <tr><td>{{ Customer.Phone_Number}}</td></tr>
+        <tr><td>{{ Customer.Address}}</td></tr>
+        <tr><td><img src="{{ Customer.profile_pic.url }}" height="200" width="200"></td></tr>
+
+    </table>
+{% endblock content %}
