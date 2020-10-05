@@ -25,7 +25,7 @@ class Food(models.Model):
     Food_Price = models.FloatField(max_length=200)
     Food_Category = models.CharField(max_length=50)
 
-    Food_Image = models.ImageField(upload_to='Foods/images/',blank=True, default="Foods/images/default.jpg")
+    Food_Image = models.ImageField(upload_to='Foods/images/',blank=True, default="images/default.jpg")
 
     merchant = models.ForeignKey(Merchant,on_delete=models.SET_NULL,null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)

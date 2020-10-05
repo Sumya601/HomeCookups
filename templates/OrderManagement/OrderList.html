@@ -4,8 +4,9 @@
 
     {% for o in Order %}
         <h2>Order info:  {{ o.id }} </h2>
-        {{ o.Order_Type }} <br>
-        {{ o.Order_Status}} <br>
+        {{ o.status}} <br>
+        {{ o.payment_options}} <br>
+        {{ o.transaction_id}} <br>
 
     {% endfor %}
 

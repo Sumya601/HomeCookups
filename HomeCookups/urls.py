@@ -42,7 +42,9 @@ urlpatterns = [
     path('review/<int:Food_id>', food_views.review_after_complete, name='review'),
 
     path('Order/', order_views.showOrders, name='Order'),
-    path('insertOrder/', order_views.insertOrder, name='insertOrder'),
+    path('myOrder/', order_views.my_orders, name='my_order'),
+    path('orderFood/<int:food_id>', order_views.make_order, name='order-food'),
+    path('bkash/<int:food_id>', order_views.bkash_order, name='bkash-order-product'),
 
     path('Bill/', bill_views.showBills, name='Bill'),
     path('insertBill/', bill_views.insertBill, name='insertBill'),
@@ -51,7 +53,11 @@ urlpatterns = [
     path('merchantregistration/', merchant_views.registration, name='merchant_registration'),
     path('customerregistration/', customer_views.registration, name='customer_registration'),
 
-    path('home/', food_views.main_home, name='main-home')
+    path('home/', food_views.main_home, name='main-home'),
+    path('cart/', order_views.view_cart, name='cart'),
+    path('updatecart/<int:food_id>', order_views.update_cart, name='update-cart'),
+    path('deletefromcart/<int:food_id>', order_views.delete_from_cart, name='delete-from-cart'),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 '''
