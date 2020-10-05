@@ -38,7 +38,7 @@ urlpatterns = [
 
     path('Food/', food_views.showFoods, name='Food'),
     path('insertFood/', food_views.insertFood, name='insertFood'),
-    path('foodDetails/<int:Food_id>', food_views.showDetails, name='Food_Details'),
+    path('Food/<int:Food_id>', food_views.showDetails, name='Food_Details'),
     path('review/<int:Food_id>', food_views.review_after_complete, name='review'),
 
     path('Order/', order_views.showOrders, name='Order'),
@@ -53,7 +53,7 @@ urlpatterns = [
     path('merchantregistration/', merchant_views.registration, name='merchant_registration'),
     path('customerregistration/', customer_views.registration, name='customer_registration'),
 
-    path('home/', food_views.main_home, name='main-home'),
+    path('', food_views.main_home, name='main-home'),
     path('cart/', order_views.view_cart, name='cart'),
     path('updatecart/<int:food_id>', order_views.update_cart, name='update-cart'),
     path('deletefromcart/<int:food_id>', order_views.delete_from_cart, name='delete-from-cart'),

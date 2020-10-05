@@ -1,5 +1,5 @@
 {% extends 'customer_base.html' %}
-{% load crispy_forms_tags %}
+
 {% block content  %}
 
 
@@ -17,30 +17,30 @@
                     {{ search.id }} <br>
                     {{ search.Food_Price}} <br>
                     {{ search.Food_Category }} <br>
-                    {{ search.Food_Desc }} <br>
+
                 </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+{#                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>#}
 {#  updatecart/product_id #}
-                  <a href="{% url 'update-cart' search.id  %}" >Add to Cart</a>
+{#                  <a href="{% url 'update-cart' search.id  %}" >Add to Cart</a>#}
 
               </div>
             </div>
           </div>
         </div>
 
-    <div class="container">
-        {% for review in search.reviews.all %}
-            User: {{ review.user.username }}<br>
-            Rating: {{ review.rating }} <br>
-            Comment: {{ review.comment }} <br><br><br>
-        {% endfor %}
-    </div>
+{#    <div class="container">#}
+{#        {% for review in search.reviews.all %}#}
+{#            User: {{ review.user.username }}<br>#}
+{#            Rating: {{ review.rating }} <br>#}
+{#            Comment: {{ review.comment }} <br><br><br>#}
+{#        {% endfor %}#}
+{#    </div>#}
 
     <div class="container">
         <form method="POST">
             {% csrf_token %}
-            {{ form | crispy }}
-            <input type="submit">
+{#            {{ form | crispy }}#}
+
         </form>
     </div>
 

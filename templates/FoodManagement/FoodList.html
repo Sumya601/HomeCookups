@@ -4,36 +4,6 @@
 
 {% block content %}
 
-
-    <br><br>
-
-    <form method="POST" action="{% url 'Food' %}">
-        {% csrf_token %}
-
-      <input  type="search" name="search" hidden value="Breakfast">
-
-      <button  type="submit">Breakfast</button>
-    </form>
-
-    <br>
-
-    <form method="POST" action="{% url 'Food' %}">
-        {% csrf_token %}
-
-      <input  type="search" name="search" hidden value="Lunch">
-
-      <button  type="submit">Lunch</button>
-    </form>
-
-    <br>
-    <form method="POST" action="{% url 'Food' %}">
-        {% csrf_token %}
-
-      <input  type="search" name="search" hidden value="Dinner">
-
-      <button  type="submit">Dinner</button>
-    </form>
-    <br><br>
     <h2>Foods</h2>
 
     <div class="row row-cols-1 row-cols-md-3">
