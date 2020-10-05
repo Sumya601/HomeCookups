@@ -1,16 +1,72 @@
-{% extends 'merchant_base.html' %}
+{% extends 'customer_base.html' %}
 {% load static %}
+
 
 {% block content %}
 
-    {% for f in Food %}
-        <h2>Food info:  {{ f.id }} </h2>
-        {{ f.Food_Name }} <br>
-        <a href="{{ f.Food_Desc.url }}">Food description</a>  <br>
-        <img src="{{ f.Food_Img.url }}" width="300" height="300" alt="image"> <br>
-        {{ f.Price }} <br>
+
+    <br><br>
+
+    <form method="POST" action="{% url 'Food' %}">
+        {% csrf_token %}
+
+      <input  type="search" name="search" hidden value="Breakfast">
+
+      <button  type="submit">Breakfast</button>
+    </form>
+
+    <br>
+
+    <form method="POST" action="{% url 'Food' %}">
+        {% csrf_token %}
+
+      <input  type="search" name="search" hidden value="Lunch">
+
+      <button  type="submit">Lunch</button>
+    </form>
+
+    <br>
+    <form method="POST" action="{% url 'Food' %}">
+        {% csrf_token %}
+
+      <input  type="search" name="search" hidden value="Dinner">
+
+      <button  type="submit">Dinner</button>
+    </form>
+    <br><br>
+    <h2>Foods</h2>
+
+    <div class="row row-cols-1 row-cols-md-3">
+
+        {% for f in Food %}
 
 
-    {% endfor %}
+        <div class="col mb-4">
+          <div class="card h-100" >
+            <img src="{{ f.Food_Image.url }}"class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ f.Food_Name }}</h5>
+              <p class="card-text">
+                  <h3>{{ f.Food_Price }}</h3>
+              </p>
+
+                {# http://127.0.0.1:8000/products/    #}
+                <a href="{{ f.id }}">
+                    {# http://127.0.0.1:8000/products/product_id    #}
+                    <button type="button" class="btn btn-outline-primary">Details</button>
+                </a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+
+    <div>
+
+
+    </div>
 
 {% endblock content %}
