@@ -40,15 +40,7 @@
         <li class="nav-item">
         <a class="nav-link" href="{% url 'Food' %}">Food List</a>
       </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'Order' %}">Order List</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'Customer' %}">Customer List</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'Merchant' %}">Merchant List</a>
-      </li>
+
         <li class="nav-item">
         <a class="nav-link" href="{% url 'View_Profile' %}">Profile</a>
       </li>
@@ -76,7 +68,7 @@
              </li>
 {% endif %}
 
-            <form method="POST" action="/Food/">
+                   <form method="POST" action="{% url 'Food' %}">
                 {% csrf_token %}
 
               <input  type="search" name="search">
@@ -93,20 +85,6 @@
 
 
 
-
-
-
-
-
-{##}
-{#{% if user.is_authenticated %}#}
-{#    <h3>{{ user.username }}</h3>#}
-{#    <a href="{% url 'logout' %}">Logout</a><br>#}
-{#{% else %}#}
-{#    <h3> Stranger!</h3>#}
-{#    <a href="{% url 'merchant_registration' %}">Sign Up</a><br>#}
-{#    <a href="{% url 'login' %}">Login</a><br>#}
-{#{% endif %}#}
 
 {% block content %}
 
