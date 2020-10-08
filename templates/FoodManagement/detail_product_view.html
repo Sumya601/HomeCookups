@@ -30,13 +30,13 @@
           </div>
         </div>
 
-{#    <div class="container">#}
-{#        {% for review in search.reviews.all %}#}
-{#            User: {{ review.user.username }}<br>#}
-{#            Rating: {{ review.rating }} <br>#}
-{#            Comment: {{ review.comment }} <br><br><br>#}
-{#        {% endfor %}#}
-{#    </div>#}
+    <div class="container">
+        {% for review in search.reviews.all %}
+            User: {{ review.user.username }}<br>
+            Rating: {{ review.rating }} <br>
+            Comment: {{ review.comment }} <br><br><br>
+        {% endfor %}
+    </div>
 
     <div class="container">
         <form method="POST">

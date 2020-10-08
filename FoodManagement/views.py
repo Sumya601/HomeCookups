@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404, redirect, HttpResponseRedirect
 from .models import Food,Cart
-# from .models import Review
-from .forms import FoodForm
+from .models import Review
+from .forms import FoodForm,ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -66,66 +66,27 @@ def main_home(request):
 
 def showDetails(request, Food_id):
     searched_food = get_object_or_404(Food, id=Food_id)
+
+    form = ReviewForm()
+
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+
+        if form.is_valid:
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+
+            searched_food.reviews.add(instance)
+            searched_food.save()
+
     context = {
-        'search': searched_food
+        'search': searched_food,
+        'form': form
     }
     return render(request, 'FoodManagement/detail_product_view.html', context)
 
-    # searched_food = get_object_or_404(Food, id=Food_id)
-    #
-    # form = ReviewForm()
-    #
-    # if request.method == "POST":
-    #     form = ReviewForm(request.POST)
-    #
-    #     if form.is_valid:
-    #         instance = form.save(commit=False)
-    #         instance.user = request.user
-    #         instance.save()
-    #
-    #         searched_food.reviews.add(instance)
-    #         searched_food.save()
-    #
-    # context = {
-    #     'search': searched_food,
-    #     'form': form
-    # }
-    # return render(request, 'FoodManagement/detail_product_view.html', context)
 
-# @login_required
-# def review_after_complete(request, food_id):
-#
-#     already_reviewed = False
-#
-#     searched_product = get_object_or_404(Food, id=food_id)
-#
-#     user_list = searched_product.reviews.filter(user=request.user)
-#     print(user_list, len(user_list))
-#     if len(user_list) != 0:
-#         already_reviewed = True
-#
-#
-#     form = ReviewForm()
-#
-#     if request.method == "POST":
-#         form = ReviewForm(request.POST)
-#
-#         if form.is_valid:
-#             instance = form.save(commit=False)
-#             instance.user = request.user
-#             instance.save()
-#
-#             searched_product.reviews.add(instance)
-#             searched_product.save()
-#
-#             #return redirect('my-orders')
-#
-#     context = {
-#         'search': searched_product,
-#         'form': form,
-#         'already_reviewed': already_reviewed
-#     }
-#     return render(request, 'FoodManagement/detail_product_view_review.html', context)
 @login_required
 def view_cart(request):
 
@@ -203,3 +164,38 @@ def delete_from_cart(request, food_id):
     cart.save()
 
     return redirect('cart')
+
+@login_required
+def review_after_complete(request, food_id):
+
+    already_reviewed = False
+
+    searched_food = get_object_or_404(Food, id=food_id)
+
+    user_list = searched_food.reviews.filter(user=request.user)
+    print(user_list, len(user_list))
+    if len(user_list) != 0:
+        already_reviewed = True
+
+
+    form = ReviewForm()
+
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+
+        if form.is_valid:
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+
+            searched_food.reviews.add(instance)
+            searched_food.save()
+
+            return redirect('my-orders')
+
+    context = {
+        'search': searched_food,
+        'form': form,
+        'already_reviewed': already_reviewed
+    }
+    return render(request, 'FoodManagement/detail_product_view_review.html', context)

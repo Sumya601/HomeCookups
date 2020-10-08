@@ -40,7 +40,7 @@ urlpatterns = [
     path('insertFood/', food_views.insertFood, name='insertFood'),
     path('Food/<int:Food_id>', food_views.showDetails, name='Food_Details'),
     path('bkash/<int:food_id>', food_views.bkash_order, name='bkash-order-food'),
-    # path('review/<int:Food_id>', food_views.review_after_complete, name='review'),
+    path('review/<int:Food_id>', food_views.review_after_complete, name='review'),
 
     path('Order/', order_views.showOrders, name='Order'),
     path('myOrder/', order_views.my_orders, name='my_order'),
