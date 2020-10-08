@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
-from .models import Order,Cart
+from .models import Order
 from .forms import OrderForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -43,7 +43,7 @@ def my_orders(request):
 
     total = 0.0
     for order in orders:
-        total += order.product.price
+        total += order.food.Food_Price
 
 
     context = {
@@ -61,9 +61,9 @@ def make_order(request, food_id):
     order = Order(user=request.user, food=food)
     order.save()
 
-    cart = Cart.objects.get(user=request.user)
-    cart.food.remove(food)
-    cart.save()
+    # cart = Cart.objects.get(user=request.user)
+    # cart.food.remove(food)
+    # cart.save()
 
     #return HttpResponseRedirect(reverse('cart'))
     return redirect('cart')
@@ -78,63 +78,58 @@ def test(request):
 
 
 
-def bkash_order(request, food_id):
+# def bkash_order(request, food_id):
+#     food = get_object_or_404(Food, id=food_id)
+#     order = Order(user=request.user, food=food)
+#     order.transaction_id = request.POST['transaction_id']
+#     order.payment_options  = 'Bkash'
+#     order.save()
+#
+#     cart = Cart.objects.get(user=request.user)
+#     cart.food.remove(food)
+#     cart.save()
+#
+#     #return HttpResponseRedirect(reverse('cart'))
+#     return redirect('cart')
+
+
+
+
+#
+# @login_required
+# def update_cart(request, Food_id):
+#
+#     food = get_object_or_404(Food, id=Food_id)
+#     cart = get_object_or_404(Cart, user=request.user)
+#
+#     cart.food.add(food)
+#     cart.save()
+#
+#     return redirect('cart')
+#
+# '''
+# try:
+#     cart = Cart.objects.get(user=request.user)
+# except cart.DoesNotExist:
+#     cart = Cart(user=request.user)
+# '''
+
+# @login_required
+# def delete_from_cart(request, Food_id):
+#
+#     food = get_object_or_404(Food, id=Food_id)
+#     cart = Cart.objects.get(user=request.user)
+#
+#     cart.food.remove(food)
+#     cart.save()
+#
+#     return redirect('cart')
+
+
+@login_required
+def make_order(request, food_id):
     food = get_object_or_404(Food, id=food_id)
     order = Order(user=request.user, food=food)
-    order.transaction_id = request.POST['transaction_id']
-    order.payment_options  = 'Bkash'
     order.save()
 
-    cart = Cart.objects.get(user=request.user)
-    cart.product.remove(food)
-    cart.save()
-
-    #return HttpResponseRedirect(reverse('cart'))
-    return redirect('cart')
-
-@login_required
-def view_cart(request):
-
-    cart = Cart.objects.get(user=request.user)
-
-
-    total = 0
-    for product in cart.product.all():
-        total += product.price
-
-    context = {
-        'cart': cart,
-        'total' : total
-    }
-
-    return render(request, 'OrderManagement/cart.html', context)
-
-
-@login_required
-def update_cart(request, food_id):
-
-    food = get_object_or_404(Food, id=food_id)
-    cart = get_object_or_404(Cart, user=request.user)
-
-    cart.food.add(food)
-    cart.save()
-
-    return redirect('cart')
-
-'''
-try:
-    cart = Cart.objects.get(user=request.user)
-except cart.DoesNotExist:
-    cart = Cart(user=request.user)
-'''
-
-@login_required
-def delete_from_cart(request, food_id):
-
-    food = get_object_or_404(Food, id=food_id)
-    cart = Cart.objects.get(user=request.user)
-
-    cart.food.remove(food)
-    cart.save()
-
-    return redirect('cart')
+    return redirect('Food')

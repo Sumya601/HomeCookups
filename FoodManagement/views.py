@@ -1,11 +1,12 @@
 from django.shortcuts import render,get_object_or_404, redirect, HttpResponseRedirect
-from .models import Food
+from .models import Food,Cart
 # from .models import Review
 from .forms import FoodForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from OrderManagement.models import Order
+from django.urls import reverse
 
 # Create your views here.
 def showFoods(request):
@@ -91,37 +92,114 @@ def showDetails(request, Food_id):
     # }
     # return render(request, 'FoodManagement/detail_product_view.html', context)
 
+# @login_required
+# def review_after_complete(request, food_id):
+#
+#     already_reviewed = False
+#
+#     searched_product = get_object_or_404(Food, id=food_id)
+#
+#     user_list = searched_product.reviews.filter(user=request.user)
+#     print(user_list, len(user_list))
+#     if len(user_list) != 0:
+#         already_reviewed = True
+#
+#
+#     form = ReviewForm()
+#
+#     if request.method == "POST":
+#         form = ReviewForm(request.POST)
+#
+#         if form.is_valid:
+#             instance = form.save(commit=False)
+#             instance.user = request.user
+#             instance.save()
+#
+#             searched_product.reviews.add(instance)
+#             searched_product.save()
+#
+#             #return redirect('my-orders')
+#
+#     context = {
+#         'search': searched_product,
+#         'form': form,
+#         'already_reviewed': already_reviewed
+#     }
+#     return render(request, 'FoodManagement/detail_product_view_review.html', context)
 @login_required
-def review_after_complete(request, food_id):
+def view_cart(request):
 
-    already_reviewed = False
+    #cart = Cart.objects.get(user=request.user)
 
-    searched_product = get_object_or_404(Food, id=food_id)
+    cart_list = Cart.objects.filter(user=request.user)
+    if len(cart_list) == 0:
+        # create a new cart for new user
+        cart = Cart(user=request.user)
+        cart.save()
+    else:
+        cart = cart_list[0]
 
-    user_list = searched_product.reviews.filter(user=request.user)
-    print(user_list, len(user_list))
-    if len(user_list) != 0:
-        already_reviewed = True
 
-
-    form = ReviewForm()
-
-    if request.method == "POST":
-        form = ReviewForm(request.POST)
-
-        if form.is_valid:
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-
-            searched_product.reviews.add(instance)
-            searched_product.save()
-
-            #return redirect('my-orders')
+    total = 0
+    for food in cart.food.all():
+        total += food.Food_Price
 
     context = {
-        'search': searched_product,
-        'form': form,
-        'already_reviewed': already_reviewed
+        'cart': cart,
+        'total' : total
     }
-    return render(request, 'FoodManagement/detail_product_view_review.html', context)
+
+    return render(request, 'FoodManagement/cart.html', context)
+
+def bkash_order(request, food_id):
+    food = get_object_or_404(Food, id=food_id)
+    order = Order(user=request.user, food=food)
+    order.transaction_id = request.POST['transaction_id']
+    order.payment_options  = 'Bkash'
+    order.save()
+
+    cart = Cart.objects.get(user=request.user)
+    cart.food.remove(food)
+    cart.save()
+
+    #return HttpResponseRedirect(reverse('cart'))
+    return redirect('cart')
+
+@login_required
+def update_cart(request, food_id):
+
+    food = get_object_or_404(Food, id=food_id)
+
+    cart_list = Cart.objects.filter(user = request.user)
+    if len(cart_list) == 0:
+        # create a new cart for new user
+        cart = Cart(user=request.user)
+        cart.save()
+    else:
+        cart = cart_list[0]
+
+    #cart = get_object_or_404(Cart, user=request.user)
+
+    cart.food.add(food)
+    cart.save()
+
+    return redirect('cart')
+
+'''
+try:
+    cart = Cart.objects.get(user=request.user)
+
+except cart.DoesNotExist:
+    cart = Cart(user=request.user)
+'''
+
+@login_required
+def delete_from_cart(request, food_id):
+
+    food = get_object_or_404(Food, id=food_id)
+    cart = Cart.objects.get(user=request.user)
+
+    cart.food.remove(food)
+    cart.save()
+
+    return redirect('cart')

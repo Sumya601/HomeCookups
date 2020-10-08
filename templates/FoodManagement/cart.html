@@ -13,7 +13,7 @@
        <div class="card bg-light mb-2`" >
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="{{ search.image.url }}" class="card-img" alt="...">
+          <img src="{{ search.Food_Image.url }}" class="card-img" alt="...">
         </div>
 
         <div class="col-md-8">
@@ -21,7 +21,7 @@
             <h5 class="card-title">{{ search.Food_Name }}</h5>
             <p class="card-text">
                             {{ search.Food_Name }} <br>
-                            {{ search.food.id }} <br>
+                            {{ search.Food_id }} <br>
                             {{ search.Food_Price }} <br>
                             {{ search.Food_Category }} <br>
                             {{ search.Food_Desc }} <br>
@@ -29,11 +29,10 @@
                         </p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
-              <h4>Option 1: <a href="{% url 'insertOrder' search.id %}" >Payment on delivery</a><br></h4>
+              <h4>Option 1: <a href="{% url 'order-food' search.id %}" >Payment on delivery</a><br></h4>
 
 
-
-              <h4>Option 2:</h4>
+        <h4>Option 2:</h4>
 
               <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

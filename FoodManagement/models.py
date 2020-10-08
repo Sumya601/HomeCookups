@@ -33,3 +33,12 @@ class Food(models.Model):
 
     def __str__(self):
         return self.Food_Name
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    food = models.ManyToManyField(Food) # can be blank or null by default
+    created_date = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_date = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.user.username

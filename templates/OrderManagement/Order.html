@@ -17,7 +17,7 @@
                <div class="card text-white bg-secondary mb-2`" >
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                      <img src="{{ order.Foods.images.url }}" class="card-img" alt="...">
+                      <img src="{{ order.food.Food_Image.url }}" class="card-img" alt="...">
                     </div>
 
                     <div class="col-md-8">
@@ -58,7 +58,7 @@
                <div class="card text-white bg-primary mb-2`" >
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                      <img src="{{ order.food.image.url }}" class="card-img" alt="...">
+                      <img src="{{ order.food.Food_Image.url }}" class="card-img" alt="...">
                     </div>
 
                     <div class="col-md-8">
@@ -96,7 +96,7 @@
                <div class="card text-white bg-success mb-2`" >
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                      <img src="{{ order.product.image.url }}" class="card-img" alt="...">
+                      <img src="{{ order.food.Food_Image.url }}" class="card-img" alt="...">
                     </div>
 
                     <div class="col-md-8">
@@ -132,12 +132,12 @@
                <div class="card text-white bg-info mb-2`" >
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                      <img src="{{ order.product.image.url }}" class="card-img" alt="...">
+                      <img src="{{ order.food.Food_Image.url }}" class="card-img" alt="...">
                     </div>
 
                     <div class="col-md-8">
                       <div class="card-body">
-                        <h5 class="card-title">{{ search.Food_Name }}</h5>
+                        <h5 class="card-title">{{ order.food.Food_Name }}</h5>
                         <p class="card-text">
                             {{ order.food.Food_Name }} <br>
                             {{ order.food.id }} <br>
@@ -148,7 +148,7 @@
                         </p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
-                        <a href="{% url 'review' order.food.id %}" ><button>Review</button></a>
+{#                        <a href="{% url 'review' order.food.id %}" ><button>Review</button></a>#}
 
                       </div>
                     </div>

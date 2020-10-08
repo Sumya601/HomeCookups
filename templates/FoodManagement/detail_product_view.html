@@ -1,5 +1,5 @@
 {% extends 'customer_base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content  %}
 
 
@@ -14,14 +14,16 @@
                 <h5 class="card-title">{{ search.Food_Name }}</h5>
                 <p class="card-text">
                     {{ search.Food_Name}} <br>
-                    {{ search.id }} <br>
+                    {{ search.Food_id }} <br>
                     {{ search.Food_Price}} <br>
                     {{ search.Food_Category }} <br>
 
                 </p>
 {#                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>#}
 {#  updatecart/product_id #}
-{#                  <a href="{% url 'update-cart' search.id  %}" >Add to Cart</a>#}
+                  <a href="{% url 'update-cart' search.id  %}" >Add to Cart</a>
+
+{#                  <h4> <a href="{% url 'order-food' search.id %}" >Payment on delivery</a><br></h4>#}
 
               </div>
             </div>
@@ -39,8 +41,8 @@
     <div class="container">
         <form method="POST">
             {% csrf_token %}
-{#            {{ form | crispy }}#}
-
+            {{ form | crispy }}
+          <input type="submit">
         </form>
     </div>
 
