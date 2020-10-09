@@ -13,11 +13,11 @@
 
         <div class="col mb-4">
           <div class="card h-100" >
-            <img src="{{ f.Food_Image.url }}"class="card-img-top" alt="...">
+            <img src="{{ f.Food_Image.url }}"class="card-img-top" height="350" width="200" alt="...">
             <div class="card-body">
-              <h5 class="card-title">{{ f.Food_Name }}</h5>
+              <h5 class="card-title">Food name:{{ f.Food_Name }}</h5>
               <p class="card-text">
-                  <h3>{{ f.Food_Price }}</h3>
+                  <h3> Price:{{ f.Food_Price }}</h3>
               </p>
 
                 {# http://127.0.0.1:8000/products/    #}

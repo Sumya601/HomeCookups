@@ -2,14 +2,29 @@
 
 {% block content %}
 
+    <div class="row row-cols-1 row-cols-md-3">
+
 
     {% for c in Customer %}
 
-        <h2>Customer info:  {{ c.id }} </h2>
-        {{ c.customer_name }} <br>
-        {{ c.Phone_Number}} <br>
-        {{ c.Address}} <br>
+        <div class="col mb-4">
+          <div class="card h-100" >
+              <img src="{{ c.profile_pic.url }}"class="card-img-top" alt="..." height="400" width="200">
+              <div class="card-body">
+                  <p class="card-text">
+                      <h2> {{ c.customer_name }} </h2>
+                      <h6> Phone number: {{ c.Phone_Number}} </h6>
+                      <h6> Address : {{ c.Address}} </h6>
+
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+
 
     {% endfor %}
+    </div>
 
 {% endblock content %}

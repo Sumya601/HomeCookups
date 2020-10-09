@@ -1,14 +1,14 @@
 {% extends 'merchant_base.html' %}
 
-
+{% load crispy_forms_tags %}
 {% block content %}
 
     <form method="POST">
         {% csrf_token %}
 
-        {{ form.as_p }}
+        {{ form | crispy }}
 
-        <input type="submit">
+        <button type="submit" class="btn btn-outline-success">Sign up</button>
     </form>
 
 {% endblock content %}

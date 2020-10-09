@@ -4,19 +4,32 @@
 
 {% block content %}
 
+    <div class="row row-cols-1 row-cols-md-3">
+
     {% for m in Merchant %}
-        <h2>Merchant info:  {{ m.id }} </h2>
-        {{ m.Merchant_Name }} <br>
-        {{ m.M_Food_Name}} <br>
-        {{ m.Business_Name}} <br>
-        {{ m.Email }} <br>
-        {{ m.NID}} <br>
-        {{ m.Phone_Number}} <br>
-        {{ m.Address}} <br>
-        <img src="{{ m.Profile_pic.url }}" width="300" height="300" alt="image"> <br>
+        <div class="col mb-4">
+          <div class="card h-100" >
+              <img src="{{ m.Profile_pic.url }}" class="card-img-top" width="200" height="400" alt="image"> <br>
+              <div class="card-body">
+                  <p class="card-text">
+                      <h2>  {{ m.Merchant_Name }} </h2>
+                      <h6> Food Name: {{ m.M_Food_Name}} </h6>
+                      <h6> Business Name : {{ m.Business_Name}} </h6>
+                       <h6> Email: {{ m.Email }} </h6>
+                      <h6> NID : {{ m.NID}} </h6>
+                       <h6> Phone number: {{ m.Phone_Number}} </h6>
+                      <h6> Address : {{ m.Address}} </h6>
+
+              </p>
+
+            </div>
+          </div>
+        </div>
 
 
 
     {% endfor %}
+    </div>
+
 
 {% endblock content %}

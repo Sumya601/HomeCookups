@@ -24,12 +24,12 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ search.Food_Name}}</h5>
                         <p class="card-text">
-                            {{ order.food.Food_Name }} <br>
-                            {{ order.food.id }} <br>
-                            {{ order.food.Food_Price }} <br>
-                            {{ order.food.Food_Category }} <br>
-                            {{ order.food.Food_Desc }} <br>
-                            <h3>{{ order.status }} </h3>
+                          <h5>Food ID:{{ order.food.id }}</h5><br>
+                          <h5> Food Name: {{ order.food.Food_Name }}</h5> <br>
+                          <h5>Price: {{ order.food.Food_Price }}</h5> <br>
+                          <h5>Catagory: {{ order.food.Food_Category }}</h5> <br>
+                            <h5>Description: {{ order.food.Food_Desc }}</h5> <br>
+                            <h3>Order Status: {{ order.status }} </h3>
                         </p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
@@ -55,7 +55,7 @@
                 <br>
 
 
-               <div class="card text-white bg-primary mb-2`" >
+               <div class="card text-white bg-info mb-2`" >
                   <div class="row no-gutters">
                     <div class="col-md-4">
                       <img src="{{ order.food.Food_Image.url }}" class="card-img" alt="...">
@@ -65,12 +65,13 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ search.Food_Name }}</h5>
                         <p class="card-text">
-                            {{ order.food.Food_Name }} <br>
-                            {{ order.food.id }} <br>
-                            {{ order.food.Food_Price }} <br>
-                            {{ order.food.Food_Category }} <br>
-                            {{ order.food.Food_Desc}} <br>
-                            <h3>{{ order.status }} </h3>
+                          <h5>Food ID:{{ order.food.id }}</h5> <br>
+                            <h5>Food Name : {{ order.food.Food_Name }}</h5><br>
+                          
+                          <h5>Price: {{ order.food.Food_Price }}</h5> <br>
+                          <h5> Catagory:{{ order.food.Food_Category }}</h5> <br>
+                          <h5>Description: {{ order.food.Food_Desc}}</h5> <br>
+                            <h3>Order Status :{{ order.status }} </h3>
                         </p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 

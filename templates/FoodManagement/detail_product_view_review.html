@@ -30,9 +30,9 @@
 
     <div class="container">
         {% for review in search.reviews.all %}
-            User: {{ review.user.username }}<br>
-            Rating: {{ review.rating }} <br>
-            Comment: {{ review.comment }} <br><br><br>
+           <h4>User: {{ review.user.username }}</h4>
+            <h4>Rating: {{ review.rating }}</h4>
+            <h4>Comment: {{ review.comment }}</h4>
         {% endfor %}
     </div>
 
@@ -41,7 +41,7 @@
         <form method="POST">
             {% csrf_token %}
             {{ form | crispy }}
-            <button type="submit">Review</button>
+            <button type="submit" class="btn btn-outline-success">Submit</button>
         </form>
         {% else %}
             <h2>You have already submitted a review</h2>

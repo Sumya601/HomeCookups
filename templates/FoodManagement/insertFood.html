@@ -9,10 +9,10 @@
         {% csrf_token %}
         {{ form | crispy }}
 
-        <input type="submit">
+        <button type="submit" class="btn btn-outline-info">Insert</button>
     </form>
 
-    <a href="{% url 'insertFood' %}">Insert Food</a>
+
 
 
 {% endblock content %}

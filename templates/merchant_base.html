@@ -10,6 +10,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <meta charset="UTF-8">
+    <style>
+     body{
+         background-color: #E3E6E3;
+     }
+    </style>
 
 
     <title>Project</title>
@@ -22,7 +27,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="{% url 'main-home' %}">HomeCookUps</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -68,12 +73,12 @@
              </li>
 {% endif %}
 
-                   <form method="POST" action="{% url 'Food' %}">
+                   <form class="form-inline" method="POST" action="{% url 'Food' %}">
                 {% csrf_token %}
 
-              <input  type="search" name="search">
+              <input class="form-control " type="search" name="search">
 
-              <button  type="submit">Search</button>
+              <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
 
@@ -89,6 +94,68 @@
 {% block content %}
 
 {% endblock content %}
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+ <footer class="ftco-footer ftco-section" style="background-color: #87CEEB ">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About</h2>
+              <p> <h6> Are you looking for best food in town?</h6> Then your search ends here.
+                Get delicious fresh homemade food from our website.
+
+
+                  </p>
+                <h4> Order Now!!!</h4>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Services</h2>
+              <ul class="list-unstyled">
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Fresh Homemade Food</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Fast Delivery system</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Pre Order</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Cash on delivery</a></li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Contact Us</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Dhanmondi , Dhaka</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+8801977671166</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">HomeCookups@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+
+          </div>
+        </div>
+      </div>
+    </footer>
+
 
 
 
