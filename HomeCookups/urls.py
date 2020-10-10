@@ -40,11 +40,11 @@ urlpatterns = [
     path('insertFood/', food_views.insertFood, name='insertFood'),
     path('Food/<int:Food_id>', food_views.showDetails, name='Food_Details'),
     path('bkash/<int:food_id>', food_views.bkash_order, name='bkash-order-food'),
-    path('review/<int:Food_id>', food_views.review_after_complete, name='review'),
+    path('review/<int:food_id>', food_views.review_after_complete, name='review'),
 
     path('Order/', order_views.showOrders, name='Order'),
-    path('myOrder/', order_views.my_orders, name='my_order'),
-    path('orderFood/<int:food_id>', order_views.make_order, name='order-food'),
+    path('myOrder/', order_views.my_orders, name='my-order'),
+    path('orderFood/<int:food_id>', food_views.make_order, name='order-food'),
 
 
     path('Bill/', bill_views.showBills, name='Bill'),
@@ -57,7 +57,9 @@ urlpatterns = [
     path('', food_views.main_home, name='main-home'),
     path('cart/', food_views.view_cart, name='cart'),
     path('updatecart/<int:food_id>', food_views.update_cart, name='update-cart'),
-    path('deletefromcart/<int:food_id>', food_views.delete_from_cart, name='delete-from-cart')
+    path('deletefromcart/<int:food_id>', food_views.delete_from_cart, name='delete-from-cart'),
+
+    path('abouts/', customer_views.abouts, name='abouts')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Food
 from django.urls import reverse
+from FoodManagement .models import Cart
 
 # Create your views here.
 def showOrders(request):
@@ -57,15 +58,17 @@ def my_orders(request):
 
 @login_required
 def make_order(request, food_id):
+    
     food = get_object_or_404(Food, id=food_id)
     order = Order(user=request.user, food=food)
     order.save()
+    print("Order done!")
 
-    # cart = Cart.objects.get(user=request.user)
-    # cart.food.remove(food)
-    # cart.save()
+    cart = Cart.objects.get(user=request.user)
+    cart.food.remove(food)
+    cart.save()
+    print("Remove done!")
 
-    #return HttpResponseRedirect(reverse('cart'))
     return redirect('cart')
 
 def test(request):
