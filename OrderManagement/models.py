@@ -26,10 +26,10 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=30, null=True, blank=True)
 
-    food = models.ForeignKey(Food, on_delete=models.SET_NULL, null=True)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE, default=1)
     #merchant = models.ForeignKey(Merchant, on_delete=models.SET_NULL, null=True)
     #customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.user.username + "-" + self.food.Food_Name + "-" + self.status
