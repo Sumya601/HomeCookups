@@ -23,6 +23,7 @@ def registration(request):
         if form.is_valid():
             form.save()
 
+
     context = {
         'form' : form
 
