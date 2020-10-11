@@ -81,10 +81,10 @@
       </li>
 
              <li class="nav-item">
-    <a href="{% url 'customer_registration' %}">Sign Up</a><br>
+    <a class="nav-link" href="{% url 'customer_registration' %}">Sign Up</a><br>
             </li>
             <li class="nav-item">
-    <a href="{% url 'login' %}">Login</a><br>
+    <a class="nav-link" href="{% url 'login' %}">Login</a><br>
              </li>
 {% endif %}
 
@@ -103,9 +103,13 @@
 
 </nav>
 
+
+
 {% block content %}
 
 {% endblock content %}
+
+
     <br>
 
     <a href="javascript:history.back()">Go Back</a>
